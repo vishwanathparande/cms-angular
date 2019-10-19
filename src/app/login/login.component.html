@@ -1,0 +1,62 @@
+<div class="container" style="padding-top:60px;">
+    <div class="row">
+        <div class="clo-md-4"></div>
+        <div class="clo-md-4">
+            <i style="color:red;" *ngFor="let item of errorMessages;">{{item}}&nbsp;&nbsp;</i>
+        </div>
+        <div class="clo-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div>
+                <p style="color:green;font-size:20px;font-weight:normal" Class="success" align="left">
+                    {{registrationMessage}}
+                </p>
+            </div>
+            <div>
+                <p style="color:green;font-size:20px;font-weight:normal" Class="success" align="left">
+                    {{loginMessage}}
+                </p>
+            </div>
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <form name="form" [formGroup]="LoginForm" (ngSubmit)="login(LoginForm.value)" #f="ngForm">
+                            <h1 style="text-align:center">Login</h1>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                                <input type="text" name="email" formControlName="email" class="form-control sty1"
+                                    placeholder="Email" required>
+                            </div>
+                            <div class="input-group mb-1" style="color:red;">
+                                <label *ngIf="submitted && fval['email'].errors">Email is required</label>
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                                </div>
+                                <input type="password" name="password" formControlName="password" class="form-control"
+                                    placeholder="Password">
+                            </div>
+                            <div class="input-group mb-1" style="color:red;">
+                                <label *ngIf="submitted && fval['password'].errors">Password is required</label>
+                            </div>
+                            <div>
+                                <p style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">
+                                    {{errorMessage}}
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="container" style="padding-top:40px;">
+    <div class="row">
+        <div class="clo-md-3"></div>
+        <div class="clo-md-6">
+            <i style="color:red;" *ngFor="let item of errorMessage;">{{item}}&nbsp;&nbsp;</i>
+        </div>
+        <div class="clo-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card mx-4">
+                <div class="card-body p-4">
+                    <form [formGroup]="UserForm" (ngSubmit)="onFormSubmit(UserForm.value)">
+                        <h1 style="text-align:center">Register</h1>
+
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+                        </div>
+                        <div class="input-group mb-1" style="color:red;">
+                            <label *ngIf="submitted && fval['name'].errors">Name is required</label>
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
+                        </div>
+                        <div class="input-group mb-1" style="color:red;">
+                            <label *ngIf="submitted && fval['email'].errors">Email is required</label>
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="password" class="form-control" placeholder="Enter Password"
+                                formControlName="password">
+                        </div>
+                        <div class="input-group mb-1" style="color:red;">
+                            <label *ngIf="submitted && fval['password'].errors">Password is required</label>
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="password" class="form-control" placeholder="Enter Password"
+                                formControlName="confirmPassword">
+                        </div>
+                        <div class="input-group mb-1" style="color:red;">
+                            <label *ngIf="submitted && fval.confirmPassword.errors">Password Mismatch
+                            </label>
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter Mobile" formControlName="mobile">
+                        </div>
+                        <div class="input-group mb-1" style="color:red;">
+                            <label *ngIf="submitted && fval['mobile'].errors">Mobile is required</label>
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter Address"
+                                formControlName="address">
+                        </div>
+                        <div class="input-group mb-1" style="color:red;">
+                            <label *ngIf="submitted && fval['address'].errors">Address is required</label>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-success">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

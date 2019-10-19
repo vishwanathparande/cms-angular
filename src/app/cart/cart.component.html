@@ -1,0 +1,97 @@
+<div class="container" style="padding-top:60px;">
+    <div class="row">
+        <!--<ag-grid-angular  style="height: 400px; width: 1200px;" class="ag-theme-balham" [rowData]="rowData"
+            [columnDefs]="columnDefs">
+            </ag-grid-angular>-->
+        <div class="col-md-12 mx-auto">
+            <p style="color:red;font-size:20px;font-weight:normal" Class="success" align="right">
+                {{quantityError}}
+            </p>
+        </div>
+        <div class="col-md-3 mx-auto">
+            <p style="color:Black;font-size:20px;font-weight:normal" Class="success" align="left">
+                Shopping Cart
+            </p>
+        </div>
+        <div class="col-md-6 mx-auto">
+            <p Class="success" align="right">
+                Subtotal ({{totalItem}} items) :
+                <span style="color:red;font-size:20px;font-weight:normal"> &#x20b9;
+                    {{ subTotal | number : '1.2-2' }}
+                </span>
+            </p>
+        </div>
+        <div class="col-md-3 mx-auto">
+            <p Class="success" align="right" *ngIf="subTotal != 0..0">
+                <button id="orderNow" class="btn btn-warning px-4" (click)="orderNow()">Order Now</button>
+            </p>
+        </div>
+        <div class="col-md-12 mx-auto">
+            <div class="card-group">
+                <div class="card p-12">
+                    <div class="card-body">
+                        <table cellpadding="20" cellspacing="20">
+                            <tbody *ngIf="productData">
+                                <tr *ngFor="let item of productData; let i = index">
+                                    <td style="width: 20%;">
+                                        <img width="200px" height="200px" src="{{url}}/{{item.image}}" />
+                                    </td>
+                                    <td>
+                                        <h5>{{item.title}} | {{item.name}}</h5>
+                                        <p style="color: #007600;">In stock.</p>
+                                        <p>
+                                            Quantity :
+                                            <select id="quantity_{{item.id}}" (change)='cartChange($event)'>
+                                                <option *ngFor="let items of [1,2,3,4,5];" [value]="items"
+                                                    [selected]="items == item.quantity">
+                                                    {{items}}
+                                                </option>
+                                            </select>
+                                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                                            <button id="product_{{item.id}}" type="button" class="btn btn-link px-0"
+                                                (click)="cartChange($event)">
+                                                Delete
+                                            </button>
+                                        </p>
+                                    </td>
+                                    <td style="width: 20%;">
+                                        <p>Price : <span id="total_price_{{item.id}}" style="color: #B12704;">
+                                                &#x20b9; {{(item.price) | number : '1.2-2'}}
+                                            </span>
+                                            <br>
+                                            <span style="font-size:60%">+
+                                                FREE Delivery.
+                                            </span>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody *ngIf="totalItem == 0">
+                                <tr>
+                                    <td>
+                                       <p>Your Shopping Cart is empty.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mx-auto">
+        </div>
+        <div class="col-md-6 mx-auto">
+            <p Class="success" align="right">
+                Subtotal ({{totalItem}} items) :
+                <span style="color:red;font-size:20px;font-weight:normal"> &#x20b9;
+                    {{ subTotal | number : '1.2-2' }}
+                </span>
+            </p>
+        </div>
+        <div class="col-md-3 mx-auto">
+            <p Class="success" align="right" *ngIf="subTotal != 0..0">
+                <button id="orderNow" class="btn btn-warning px-4" (click)="orderNow()">Order Now</button>
+            </p>
+        </div>
+    </div>
+</div>

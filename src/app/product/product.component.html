@@ -1,0 +1,57 @@
+<div class="container" style="padding-top:60px;">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="card-group">
+                <div class="card p-12">
+                    <div class="card-body">
+                        <table cellpadding="20" cellspacing="20">
+                            <tbody *ngIf="productData">
+                                <tr *ngFor="let item of productData; let i = index">
+                                    <td style="width: 20%;">
+                                        <img width="200px" height="200px" src="{{url}}/{{item.image}}" />
+                                    </td>
+                                    <td>
+                                        <h5>{{item.title}} | {{item.name}}</h5>
+                                        <p>Price : <span id="price_{{item.id}}" style="color: #B12704;">
+                                                &#x20b9; {{item.price | number : '1.2-2'}}
+                                            </span>
+                                            <span style="font-size:80%; font-weight: bold">
+                                                &nbsp;&nbsp;&nbsp;+ FREE Delivery.
+                                            </span>
+                                        </p>
+                                        <p style="color: #007600;">In stock.</p>
+                                        <p>Cashback: Flat Rs.50 back on minimum order of Rs.50 using Amazon Pay UPI. For
+                                            Android App customers only. Valid once during offer period. Cashback within
+                                            10 days. </p>
+                                        <p>Description : {{item.description}}</p>
+                                    </td>
+                                    <td style="width: 20%;">
+                                        <p>Price : <span id="total_price_{{item.id}}" style="color: #B12704;">
+                                                &#x20b9; {{item.price | number : '1.2-2'}}
+                                            </span>
+                                            <br>
+                                            <span style="font-size:60%">+
+                                                FREE Delivery.
+                                            </span>
+                                        </p>
+                                        <p>Quantity :
+                                            <select id="quantity_{{item.id}}" (change)='quantityChange($event)'>
+                                                <option *ngFor="let items of [1,2,3,4,5];" [value]="items">
+                                                    {{items}}
+                                                </option>
+                                            </select>
+                                        </p>
+                                        <p>
+                                            <button id="cart_{{item.id}}" quantity="1" class="btn btn-warning px-4"
+                                                (click)="addToCart($event)">Add to Cart</button>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
